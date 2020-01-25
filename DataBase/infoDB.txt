@@ -1,0 +1,4 @@
+DBMS: Mysql8
+DataBase Name: water_laboratory
+User: userLabWaters
+Password: systems2019Waters 
