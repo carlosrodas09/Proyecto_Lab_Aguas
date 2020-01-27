@@ -2,8 +2,8 @@ package com.mycompany.supply;
 
 import com.mycompany.packageLab.ParameterSupply;
 import java.io.Serializable;
+import java.time.LocalDate;
 import java.util.List;
-import java.util.Date;
 import java.util.Objects;
 import javax.persistence.Basic;
 import javax.persistence.CascadeType;
@@ -36,10 +36,10 @@ public class Supply implements Serializable {
     @Basic(optional = false)
     @Column(name = "date_expiry")
     @Temporal(TemporalType.DATE)
-    private Date dateExpiry;
+    private LocalDate dateExpiry;
     @Basic(optional = false)
     @Column(name = "quantity_available")
-    private double quantityAvailable;
+    private Double quantityAvailable;
     @Lob
     @Column(name = "security_sheet")
     private byte[] securitySheet;
@@ -58,7 +58,7 @@ public class Supply implements Serializable {
         this.idSupply = idSupply;
     }
 
-    public Supply(Integer idSupply, String nameSupply, Date dateExpiry, double quantityAvailable) {
+    public Supply(Integer idSupply, String nameSupply, LocalDate dateExpiry, double quantityAvailable) {
         this.idSupply = idSupply;
         this.nameSupply = nameSupply;
         this.dateExpiry = dateExpiry;
@@ -81,19 +81,19 @@ public class Supply implements Serializable {
         this.nameSupply = nameSupply;
     }
 
-    public Date getDateExpiry() {
+    public LocalDate getDateExpiry() {
         return dateExpiry;
     }
 
-    public void setDateExpiry(Date dateExpiry) {
+    public void setDateExpiry(LocalDate dateExpiry) {
         this.dateExpiry = dateExpiry;
     }
 
-    public double getQuantityAvailable() {
+    public Double getQuantityAvailable() {
         return quantityAvailable;
     }
 
-    public void setQuantityAvailable(double quantityAvailable) {
+    public void setQuantityAvailable(Double quantityAvailable) {
         this.quantityAvailable = quantityAvailable;
     }
 
