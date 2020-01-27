@@ -33,7 +33,7 @@ public class AnalysisPackage implements Serializable {
     private Analysis analysisId;
     @JoinColumn(name = "package_id", referencedColumnName = "id_package")
     @ManyToOne(optional = false)
-    private Package packageId;
+    private PackageL packageId;
     @OneToMany(cascade = CascadeType.PERSIST, mappedBy = "analysisPackageId")
     private List<ParameterResult> parameterResultList;
 
@@ -60,11 +60,11 @@ public class AnalysisPackage implements Serializable {
         this.analysisId = analysisId;
     }
 
-    public Package getPackageId() {
+    public PackageL getPackageId() {
         return packageId;
     }
 
-    public void setPackageId(Package packageId) {
+    public void setPackageId(PackageL packageId) {
         this.packageId = packageId;
     }
 

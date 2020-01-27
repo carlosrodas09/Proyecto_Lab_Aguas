@@ -1,4 +1,4 @@
-package com.mycompany.packageLab.service;
+package com.mycompany.packageLab.repository;
 
 import static config.Constants.PERSISTENCE_UNIT_NAME;
 import com.mycompany.packageLab.Analysis;
@@ -23,8 +23,6 @@ import javax.persistence.criteria.Root;
 @Stateless
 @LocalBean
 public class AnalysisRepository {
-
-    public static final String GET_ALL = "SELECT a FROM Analysis a";
 
     @PersistenceContext(name = PERSISTENCE_UNIT_NAME)
     private EntityManager entityManager;
