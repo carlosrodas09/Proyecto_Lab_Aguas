@@ -20,16 +20,16 @@
 
                 <div class="row">
                     <div class="form-group col-sm-4">
-                        <p:outputLabel for="name" value="Nombre usuario" />
+                        <p:outputLabel for="name" value="DPI de Empleado:" />
                         <p:inputText id="name" styleClass="form-control" required="true"
-                                     pt:required="true" value="#{loginView.userCarnet}"
+                                     pt:required="true" value="#{loginView.dpi}"
                                      />
                     </div>
                 </div>
                 <div class="row">
                     <div class="form-group col-sm-4">
-                        <p:outputLabel for="pass" value="Password:" />
-                        <p:password id="pass" styleClass="form-control" pt:placeholder="#{i18nLabels.Password}" required="true"
+                        <p:outputLabel for="pass" value="Contrasena:" />
+                        <p:password id="pass" styleClass="form-control" pt:placeholder="Contrasena" required="true"
                                     pt:required="true" value="#{loginView.password}" pt:type="password"
                                     requiredMessage="Ingrese contrasena"/>
                     </div>
