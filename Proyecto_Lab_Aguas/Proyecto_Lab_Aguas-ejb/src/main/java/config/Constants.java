@@ -10,8 +10,7 @@ package config;
  * @author angelrg
  */
 public class Constants {
-    
-    
+
     public static final String PERSISTENCE_UNIT_NAME = "??????";
     public static final String JDBC_RESOURCE = "??????";
 }
