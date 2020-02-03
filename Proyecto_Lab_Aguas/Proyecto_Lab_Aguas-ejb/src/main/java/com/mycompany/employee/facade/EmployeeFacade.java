@@ -5,6 +5,9 @@
  */
 package com.mycompany.employee.facade;
 
+import com.mycompany.employee.Employee;
+import com.mycompany.employee.service.EmployeeService;
+import javax.ejb.EJB;
 import javax.ejb.Stateless;
 
 /**
@@ -14,6 +17,12 @@ import javax.ejb.Stateless;
 @Stateless
 public class EmployeeFacade implements EmployeeFacadeLocal {
 
-    
-    
+    @EJB
+    private EmployeeService employeeService;
+
+    @Override
+    public Employee createEmployee(Employee employee) {
+        return employeeService.createEmployee(employee);
+    }
+
 }

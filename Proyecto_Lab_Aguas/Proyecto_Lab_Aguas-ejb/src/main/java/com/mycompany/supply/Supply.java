@@ -35,7 +35,6 @@ public class Supply implements Serializable {
     private String nameSupply;
     @Basic(optional = false)
     @Column(name = "date_expiry")
-    @Temporal(TemporalType.DATE)
     private LocalDate dateExpiry;
     @Basic(optional = false)
     @Column(name = "quantity_available")
