@@ -27,6 +27,10 @@ public class AnalysisRepository {
     @PersistenceContext(name = PERSISTENCE_UNIT_NAME)
     private EntityManager entityManager;
 
+    public void setEntityManager(EntityManager entityManager) {
+        this.entityManager = entityManager;
+    }
+
     public Optional<Analysis> findAnalysisByID(Integer id) {
         return Optional.of(entityManager.find(Analysis.class, id));
     }
