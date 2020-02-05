@@ -17,7 +17,7 @@ import javax.persistence.Table;
  */
 @Entity
 @Table(name = "PACKAGE")
-public class Package implements Serializable {
+public class PackageL implements Serializable {
 
     @Id
     @Basic(optional = false)
@@ -34,25 +34,17 @@ public class Package implements Serializable {
     @OneToMany(cascade = CascadeType.PERSIST, mappedBy = "packageId")
     private List<ParameterPackage> parameterPackageList;
 
-    public Package() {
+    public PackageL() {
     }
 
-    public Package(String idPackage) {
+    public PackageL(String idPackage) {
         this.idPackage = idPackage;
     }
 
-    public Package(String idPackage, String namePackage, double packageCost) {
-        this.idPackage = idPackage;
-        this.namePackage = namePackage;
-        this.packageCost = packageCost;
-    }
-
-    public Package(String idPackage, String namePackage, double packageCost, List<AnalysisPackage> analysisPackageList, List<ParameterPackage> parameterPackageList) {
+    public PackageL(String idPackage, String namePackage, double packageCost) {
         this.idPackage = idPackage;
         this.namePackage = namePackage;
         this.packageCost = packageCost;
-        this.analysisPackageList = analysisPackageList;
-        this.parameterPackageList = parameterPackageList;
     }
 
     public String getIdPackage() {
@@ -105,10 +97,10 @@ public class Package implements Serializable {
         if (this == object) {
             return true;
         }
-        if (!(object instanceof Package)) {
+        if (!(object instanceof PackageL)) {
             return false;
         }
-        Package other = (Package) object;
+        PackageL other = (PackageL) object;
         return Objects.equals(getIdPackage(), other.getIdPackage());
     }
     

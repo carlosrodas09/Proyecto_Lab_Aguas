@@ -30,7 +30,7 @@ public class ParameterPackage implements Serializable {
     private double lmp;
     @JoinColumn(name = "package_id", referencedColumnName = "id_package")
     @ManyToOne(optional = false)
-    private Package packageId;
+    private PackageL packageId;
     @JoinColumn(name = "parameter_id", referencedColumnName = "id_parameter")
     @ManyToOne(optional = false)
     private Parameter parameterId;
@@ -48,7 +48,7 @@ public class ParameterPackage implements Serializable {
         this.lmp = lmp;
     }
 
-    public ParameterPackage(Integer idPP, double lma, double lmp, Package packageId, Parameter parameterId) {
+    public ParameterPackage(Integer idPP, double lma, double lmp, PackageL packageId, Parameter parameterId) {
         this.idPP = idPP;
         this.lma = lma;
         this.lmp = lmp;
@@ -80,11 +80,11 @@ public class ParameterPackage implements Serializable {
         this.lmp = lmp;
     }
 
-    public Package getPackageId() {
+    public PackageL getPackageId() {
         return packageId;
     }
 
-    public void setPackageId(Package packageId) {
+    public void setPackageId(PackageL packageId) {
         this.packageId = packageId;
     }
 

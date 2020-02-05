@@ -59,6 +59,14 @@ public class Analysis implements Serializable {
         this.costAnalysis = costAnalysis;
     }
 
+    public Analysis(Integer idAnalysis, Date dateAnalysis, double costAnalysis, Employee employeeDpi, Sample sampleId) {
+        this.idAnalysis = idAnalysis;
+        this.dateAnalysis = dateAnalysis;
+        this.costAnalysis = costAnalysis;
+        this.employeeDpi = employeeDpi;
+        this.sampleId = sampleId;
+    }
+
     public Integer getIdAnalysis() {
         return idAnalysis;
     }
