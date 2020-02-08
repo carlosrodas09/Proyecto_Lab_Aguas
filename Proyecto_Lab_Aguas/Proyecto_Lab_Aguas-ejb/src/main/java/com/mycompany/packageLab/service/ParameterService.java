@@ -1,7 +1,7 @@
 package com.mycompany.packageLab.service;
 
+import static com.mycompany.config.Constants.PERSISTENCE_UNIT_NAME;
 import com.mycompany.packageLab.Parameter;
-import static config.Constants.PERSISTENCE_UNIT_NAME;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 

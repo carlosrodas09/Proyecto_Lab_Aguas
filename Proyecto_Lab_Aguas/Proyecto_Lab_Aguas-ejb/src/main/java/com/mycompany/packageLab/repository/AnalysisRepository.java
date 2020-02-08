@@ -1,6 +1,7 @@
 package com.mycompany.packageLab.repository;
 
-import static config.Constants.PERSISTENCE_UNIT_NAME;
+
+import static com.mycompany.config.Constants.PERSISTENCE_UNIT_NAME;
 import com.mycompany.packageLab.Analysis;
 import java.time.LocalDate;
 import java.util.ArrayList;

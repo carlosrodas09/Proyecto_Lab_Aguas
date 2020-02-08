@@ -27,7 +27,7 @@ public class Shopping implements Serializable {
     private Integer idShopping;
     @Basic(optional = false)
     @Column(name = "amount_purchased")
-    private double amountPurchased;
+    private Double amountPurchased;
     @Basic(optional = false)
     @Column(name = "date_shopping")
     @Temporal(TemporalType.DATE)
@@ -75,11 +75,11 @@ public class Shopping implements Serializable {
         this.idShopping = idShopping;
     }
 
-    public double getAmountPurchased() {
+    public Double getAmountPurchased() {
         return amountPurchased;
     }
 
-    public void setAmountPurchased(double amountPurchased) {
+    public void setAmountPurchased(Double amountPurchased) {
         this.amountPurchased = amountPurchased;
     }
 
