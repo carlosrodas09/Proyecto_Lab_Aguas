@@ -1,9 +1,9 @@
 package com.mycompany.packageLab.repository;
 
+import static com.mycompany.config.Constants.PERSISTENCE_UNIT_NAME;
 import com.mycompany.packageLab.PackageL;
 import com.mycompany.packageLab.Parameter;
 import com.mycompany.packageLab.ParameterPackage;
-import static config.Constants.PERSISTENCE_UNIT_NAME;
 import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;

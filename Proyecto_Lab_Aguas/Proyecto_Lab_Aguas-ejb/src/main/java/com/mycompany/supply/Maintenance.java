@@ -1,6 +1,7 @@
 package com.mycompany.supply;
 
 import java.io.Serializable;
+import java.time.LocalDate;
 import java.util.Date;
 import java.util.Objects;
 import javax.persistence.Basic;
@@ -28,10 +29,10 @@ public class Maintenance implements Serializable {
     @Basic(optional = false)
     @Column(name = "maintenance_date")
     @Temporal(TemporalType.DATE)
-    private Date maintenanceDate;
+    private LocalDate maintenanceDate;
     @Basic(optional = false)
     @Column(name = "maintenance_cost")
-    private double maintenanceCost;
+    private Double maintenanceCost;
     @JoinColumn(name = "equipment_id", referencedColumnName = "id_equipment")
     @ManyToOne(optional = false)
     private Equipment equipmentId;
@@ -46,13 +47,13 @@ public class Maintenance implements Serializable {
         this.idMaintenance = idMaintenance;
     }
 
-    public Maintenance(Integer idMaintenance, Date maintenanceDate, double maintenanceCost) {
+    public Maintenance(Integer idMaintenance, LocalDate maintenanceDate, Double maintenanceCost) {
         this.idMaintenance = idMaintenance;
         this.maintenanceDate = maintenanceDate;
         this.maintenanceCost = maintenanceCost;
     }
 
-    public Maintenance(Integer idMaintenance, Date maintenanceDate, double maintenanceCost, Equipment equipmentId, Provider providerId) {
+    public Maintenance(Integer idMaintenance, LocalDate maintenanceDate, Double maintenanceCost, Equipment equipmentId, Provider providerId) {
         this.idMaintenance = idMaintenance;
         this.maintenanceDate = maintenanceDate;
         this.maintenanceCost = maintenanceCost;
@@ -68,19 +69,19 @@ public class Maintenance implements Serializable {
         this.idMaintenance = idMaintenance;
     }
 
-    public Date getMaintenanceDate() {
+    public LocalDate getMaintenanceDate() {
         return maintenanceDate;
     }
 
-    public void setMaintenanceDate(Date maintenanceDate) {
+    public void setMaintenanceDate(LocalDate maintenanceDate) {
         this.maintenanceDate = maintenanceDate;
     }
 
-    public double getMaintenanceCost() {
+    public Double getMaintenanceCost() {
         return maintenanceCost;
     }
 
-    public void setMaintenanceCost(double maintenanceCost) {
+    public void setMaintenanceCost(Double maintenanceCost) {
         this.maintenanceCost = maintenanceCost;
     }
 

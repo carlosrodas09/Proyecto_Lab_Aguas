@@ -1,7 +1,7 @@
 package com.mycompany.packageLab.repository;
 
+import static com.mycompany.config.Constants.PERSISTENCE_UNIT_NAME;
 import com.mycompany.packageLab.AnalysisPackage;
-import static config.Constants.PERSISTENCE_UNIT_NAME;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;

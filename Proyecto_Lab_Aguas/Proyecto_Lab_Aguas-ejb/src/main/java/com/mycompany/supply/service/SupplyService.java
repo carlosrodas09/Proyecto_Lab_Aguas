@@ -3,7 +3,7 @@ package com.mycompany.supply.service;
 
 import static com.mycompany.config.Constants.PERSISTENCE_UNIT_NAME;
 import com.mycompany.supply.Supply;
-import com.mycompany.exceptions.MandatoryAttributeException;
+import exception.MandatoryAttributeException;
 import com.mycompany.supply.Measure;
 import java.time.LocalDate;
 import javax.ejb.LocalBean;

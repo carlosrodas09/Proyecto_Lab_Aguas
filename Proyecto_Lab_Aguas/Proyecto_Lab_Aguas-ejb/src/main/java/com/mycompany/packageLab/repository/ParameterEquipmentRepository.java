@@ -1,10 +1,9 @@
+
 package com.mycompany.packageLab.repository;
 
 import static com.mycompany.config.Constants.PERSISTENCE_UNIT_NAME;
-import com.mycompany.packageLab.Parameter;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
 import javax.ejb.LocalBean;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
@@ -15,39 +14,36 @@ import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Predicate;
 import javax.persistence.criteria.Root;
 
-/**
- *
- * @author angelrg
- */
 @Stateless
 @LocalBean
-public class parameterRepository {
-
-    @PersistenceContext(name = PERSISTENCE_UNIT_NAME)
+public class ParameterEquipmentRepository {
+    
     private EntityManager entityManager;
 
+    @PersistenceContext(name = PERSISTENCE_UNIT_NAME)
     public void setEntityManager(EntityManager entityManager) {
         this.entityManager = entityManager;
     }
 
-    public Optional<Parameter> findParameterById(String id) {
-        return Optional.of(entityManager.find(Parameter.class, id));
+    public ParameterEquipmentRepository() {
     }
-
-    public List<Parameter> getParameters(String id, String name) {
+    
+    public List<ParameterEquipmentRepository> searchParameterSupply(Integer idEquipment, String parameterId){
         CriteriaBuilder criteriaBuilder = entityManager.getCriteriaBuilder();
-        CriteriaQuery<Parameter> criteriaQuery = criteriaBuilder.createQuery(Parameter.class);
-        Root<Parameter> parameterR = criteriaQuery.from(Parameter.class);
+        CriteriaQuery<ParameterEquipmentRepository> criteriaQuery = criteriaBuilder.createQuery(ParameterEquipmentRepository.class);
+        Root<ParameterEquipmentRepository> supply = criteriaQuery.from(ParameterEquipmentRepository.class);
         ArrayList<Predicate> predicates = new ArrayList<>();
-
-        if (id != null) {
-            predicates.add(criteriaBuilder.like(parameterR.get("id_parameter"), "%" + id + "%"));
+        
+        if (parameterId != null){
+            predicates.add(criteriaBuilder.like(supply.get("parameterId"), "%" + parameterId + "%"));
         }
-        if (name != null) {
-            predicates.add(criteriaBuilder.like(parameterR.get("name_parameter"), "%" + name + "%"));
+        
+        if (idEquipment != null){
+            predicates.add(criteriaBuilder.like(supply.get("equipmentId"), "%" + idEquipment + "%"));
         }
+                
         criteriaQuery.where(predicates.stream().toArray(Predicate[]::new));
-        TypedQuery<Parameter> query = entityManager.createQuery(criteriaQuery);
+        TypedQuery<ParameterEquipmentRepository> query = entityManager.createQuery(criteriaQuery);
         return query.getResultList();
     }
 }

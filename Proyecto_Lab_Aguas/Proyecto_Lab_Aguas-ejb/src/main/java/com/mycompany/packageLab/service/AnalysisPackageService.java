@@ -1,7 +1,7 @@
 package com.mycompany.packageLab.service;
 
+import static com.mycompany.config.Constants.PERSISTENCE_UNIT_NAME;
 import com.mycompany.packageLab.AnalysisPackage;
-import static config.Constants.PERSISTENCE_UNIT_NAME;
 import javax.ejb.LocalBean;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;

@@ -25,7 +25,7 @@ public class ParameterEquipment implements Serializable {
     private Integer idParameterEquipment;
     @Basic(optional = false)
     @Column(name = "working_hours")
-    private double workingHours;
+    private Double workingHours;
     @JoinColumn(name = "equipment_id", referencedColumnName = "id_equipment")
     @ManyToOne(optional = false)
     private Equipment equipmentId;
@@ -40,12 +40,12 @@ public class ParameterEquipment implements Serializable {
         this.idParameterEquipment = idParameterEquipment;
     }
 
-    public ParameterEquipment(Integer idParameterEquipment, double workingHours) {
+    public ParameterEquipment(Integer idParameterEquipment, Double workingHours) {
         this.idParameterEquipment = idParameterEquipment;
         this.workingHours = workingHours;
     }
 
-    public ParameterEquipment(Integer idParameterEquipment, double workingHours, Equipment equipmentId, Parameter parameterId) {
+    public ParameterEquipment(Integer idParameterEquipment, Double workingHours, Equipment equipmentId, Parameter parameterId) {
         this.idParameterEquipment = idParameterEquipment;
         this.workingHours = workingHours;
         this.equipmentId = equipmentId;
@@ -60,11 +60,11 @@ public class ParameterEquipment implements Serializable {
         this.idParameterEquipment = idParameterEquipment;
     }
 
-    public double getWorkingHours() {
+    public Double getWorkingHours() {
         return workingHours;
     }
 
-    public void setWorkingHours(double workingHours) {
+    public void setWorkingHours(Double workingHours) {
         this.workingHours = workingHours;
     }
 

@@ -25,7 +25,7 @@ public class ParameterSupply implements Serializable {
     private Integer idParameterSupply;
     @Basic(optional = false)
     @Column(name = "amount_used")
-    private double amountUsed;
+    private Double amountUsed;
     @JoinColumn(name = "parameter_id", referencedColumnName = "id_parameter")
     @ManyToOne(optional = false)
     private Parameter parameterId;
@@ -40,12 +40,12 @@ public class ParameterSupply implements Serializable {
         this.idParameterSupply = idParameterSupply;
     }
 
-    public ParameterSupply(Integer idParameterSupply, double amountUsed) {
+    public ParameterSupply(Integer idParameterSupply, Double amountUsed) {
         this.idParameterSupply = idParameterSupply;
         this.amountUsed = amountUsed;
     }
 
-    public ParameterSupply(Integer idParameterSupply, double amountUsed, Parameter parameterId, Supply supplyId) {
+    public ParameterSupply(Integer idParameterSupply, Double amountUsed, Parameter parameterId, Supply supplyId) {
         this.idParameterSupply = idParameterSupply;
         this.amountUsed = amountUsed;
         this.parameterId = parameterId;
@@ -60,11 +60,11 @@ public class ParameterSupply implements Serializable {
         this.idParameterSupply = idParameterSupply;
     }
 
-    public double getAmountUsed() {
+    public Double getAmountUsed() {
         return amountUsed;
     }
 
-    public void setAmountUsed(double amountUsed) {
+    public void setAmountUsed(Double amountUsed) {
         this.amountUsed = amountUsed;
     }
 

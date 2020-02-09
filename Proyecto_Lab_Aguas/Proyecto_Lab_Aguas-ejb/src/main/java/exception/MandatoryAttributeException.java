@@ -1,5 +1,5 @@
 
-package com.mycompany.exceptions;
+package exception;
 
 public class MandatoryAttributeException extends Exception {
 
