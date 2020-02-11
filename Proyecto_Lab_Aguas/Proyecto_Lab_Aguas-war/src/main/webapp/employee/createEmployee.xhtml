@@ -43,8 +43,8 @@
 
                 <div class="row">
                     <div class="form-group col-sm-4">
-                        <p:outputLabel for="career" value="Carrera: " />
-                        <p:selectOneMenu id="career"  value="#{createEmployeeView.employee.staffPositionId}" converter="staffPositionConverter">
+                        <p:outputLabel for="staffPosition" value="Puesto: " />
+                        <p:selectOneMenu id="staffPosition"  value="#{createEmployeeView.employee.staffPositionId}" converter="staffPositionConverter">
                             <f:selectItems value="#{createEmployeeView.staffPositions}" var="staffPosition"
                                            itemValue="#{staffPosition}"
                                            itemLabel="#{staffPosition.nameStaffPosition}"/>

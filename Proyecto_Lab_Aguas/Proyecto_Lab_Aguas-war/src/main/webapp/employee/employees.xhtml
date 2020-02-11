@@ -1,16 +1,161 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!--
-To change this license header, choose License Headers in Project Properties.
-To change this template file, choose Tools | Templates
-and open the template in the editor.
--->
-<!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml">
-    <head>
-        <title>TODO supply a title</title>
-        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    </head>
-    <body>
-        <div>TODO write content</div>
-    </body>
-</html>
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                template="../templates/template.xhtml"
+                xmlns:p="http://primefaces.org/ui"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:pt="http://xmlns.jcp.org/jsf/passthrough"
+                xmlns:f="http://xmlns.jcp.org/jsf/core"
+                xmlns:jsf="http://xmlns.jcp.org/jsf"
+                xmlns:of="http://omnifaces.org/functions">
+
+    <ui:define name="title">
+        Usuarios
+    </ui:define>
+
+    <ui:define name="content">
+        <h:form id="publicationsSearch">
+            <fieldset>
+                <legend>Consultar Usuarios</legend>
+                <div class="row">
+                    <div class="form-group col-sm-4">
+                        <p:outputLabel for="dpi" value="Dpi:" />
+                        <p:inputText id="dpi"
+                                     styleClass="form-control"
+                                     pt:placeholder="Dpi Usuario"
+                                     value="#{employeeView.dpiSearchCriteria}"/>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="form-group col-sm-4">
+                        <p:outputLabel for="name" value="Nombre:" />
+                        <p:inputText id="name"
+                                     styleClass="form-control"
+                                     pt:placeholder="Nombre Usuario"
+                                     value="#{employeeView.nameSearchCriteria}"/>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="btn-group pull-right">
+                        <p:commandLink styleClass="btn btn-primary" update=":usersTable"
+                                       actionListener="#{employeeView.searchUsers()}">
+                            <span class="glyphicon glyphicon-search"></span> Buscar
+                        </p:commandLink>
+                    </div>
+                </div>
+            </fieldset>
+        </h:form>
+        <div class="row">
+            <p:dataTable id="usersTable" var="employee" value="#{employeeView.employees}"
+                         reflow="true">
+                <p:column headerText="dpi">
+                    <h:outputText value="#{employee.dpiEmployee}" />
+                </p:column>
+                <p:column headerText="nombre">
+                    <h:outputText value="#{employee.nameEmployee}" />
+                </p:column>
+                <p:column headerText="telefono">
+                    <h:outputText value="#{employee.phoneEmployee}" />
+                </p:column>
+                <p:column headerText="estado">
+                    <h:outputText value="#{employee.isActive}" />
+                </p:column>
+                <p:column headerText="puesto">
+                    <h:outputText value="#{employee.staffPositionId.nameStaffPosition}" />
+                </p:column>
+                <p:column headerText="Editar" styleClass="text-center">
+                    <p data-placement="top" data-toggle="tooltip" title="Editar">
+                        <p:commandLink styleClass="btn btn-primary btn-xs" oncomplete="PF('dlgEdit').show();"
+                                       update=":#{p:component('dlgEdit')}">
+                            <f:setPropertyActionListener value="#{employee}" target="#{employeeView.currentUser}"/>
+                            <span class="glyphicon glyphicon-pencil"></span>
+                        </p:commandLink>
+                    </p>
+                </p:column>
+                <p:column headerText="activar/desactivar" styleClass="text-center">
+                    <p data-placement="top" data-toggle="tooltip" title="Desactivar">
+                        <p:commandLink styleClass="btn btn-success btn-xs"
+                                       actionListener="#{employeeView.changeUserState(employee.dpiEmployee)}" 
+                                       update=":#{p:component('usersTable')}">
+                            <span class="glyphicon glyphicon-remove"></span>
+                        </p:commandLink>
+                    </p>
+                </p:column>
+
+            </p:dataTable>
+
+            <p:dialog header="Usuario" id="dlgEdit" widgetVar="dlgEdit"
+                      fitViewport="true" modal="true" closeOnEscape="true">
+                <p:ajax event="close" listener="#{employeeView.clearCurrentUser()}" update="@this" />
+                <h:form>
+                    <div class="modal-body">
+                        <fieldset>
+                            <div class="row form-group">
+                                <p:outputLabel for="name" value="nombre" styleClass="col-md-4 control-label"/>
+                                <div class="col-md-8">
+                                    <p:inputText id="name" styleClass="form-control" pt:placeholder="Nombre"
+                                                 pt:required="true" maxlength="45" required="true"
+                                                 value="#{employeeView.currentUser.nameEmployee}"/>
+                                </div>
+                            </div>
+                            <div class="row form-group">
+                                <p:outputLabel for="phone" value="Telefono" styleClass="col-md-4 control-label"/>
+                                <div class="col-md-8">
+                                    <p:inputText id="phone" styleClass="form-control" pt:placeholder="Nombre Usuario"
+                                                 pt:required="true" maxlength="45" required="true"
+                                                 value="#{employeeView.currentUser.phoneEmployee}"/>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="form-group col-sm-4">
+                                    <p:outputLabel for="rol" value="Puesto: " />
+                                    <p:selectOneMenu id="rol"  value="#{employeeView.currentUser.staffPositionId}" converter="staffPositionConverter">
+                                        <f:selectItems value="#{employeeView.staffPositionEmployees}" var="staffPostion"
+                                                       itemValue="#{staffPostion}"
+                                                       itemLabel="#{staffPostion.nameStaffPosition}"/>
+                                    </p:selectOneMenu>
+                                </div>
+                            </div>
+
+                        </fieldset>
+                    </div>
+                    <div class="modal-footer ">
+                        <p:commandLink styleClass="btn btn-warning btn-lg" style="width: 100%;"
+                                       update="@form,:#{p:component('usersTable')},:#{p:component('growl')}"
+                                       actionListener="#{employeeView.saveChanges('dlgEdit')}">
+                            <span class="glyphicon glyphicon-ok-sign"></span> Guardar
+                        </p:commandLink>
+                    </div>
+                </h:form>
+            </p:dialog>
+            <p:dialog header="Reset Contrasena" id="dlgReset" widgetVar="dlgReset"
+                      fitViewport="true" modal="true" closeOnEscape="true">
+                <p:ajax event="close" listener="#{employeeView.clearCurrentUser()}" update="@this" />
+                <h:form>
+                    <div class="modal-body">
+                        <fieldset>
+                            <div class="row form-group">
+                                <p:outputLabel value="nombre" styleClass="col-md-4 control-label"/>
+                                <div class="col-md-8">
+                                    <p:outputLabel id="name" value="#{employeeView.currentUser.nameEmployee}"/>
+                                </div>
+                            </div>
+                        </fieldset>
+                    </div>
+                    <div class="modal-footer ">
+                        <p:commandLink styleClass="btn btn-warning btn-lg" style="width: 100%;"
+                                       update="@form,:#{p:component('usersTable')},:#{p:component('growl')}"
+                                       actionListener="#{userView.resetPassword('dlgReset')}">
+                            <span class="glyphicon glyphicon-ok-sign"></span> Reset Contrasena
+                        </p:commandLink>
+                    </div>
+                </h:form>
+            </p:dialog>
+        </div>
+    </ui:define>
+
+</ui:composition>
+
+
