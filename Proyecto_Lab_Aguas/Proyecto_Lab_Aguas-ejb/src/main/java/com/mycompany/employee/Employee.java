@@ -35,7 +35,7 @@ public class Employee implements Serializable {
     private String nameEmployee;
     @Basic(optional = false)
     @Column(name = "is_active")
-    private boolean isActive;
+    private Boolean isActive;
     @Column(name = "phone_employee")
     private String phoneEmployee;
     @JoinColumn(name = "staff_position_id", referencedColumnName = "id_staff_position")
@@ -92,7 +92,7 @@ public class Employee implements Serializable {
         this.nameEmployee = nameEmployee;
     }
 
-    public boolean getIsActive() {
+    public Boolean getIsActive() {
         return isActive;
     }
 
@@ -139,6 +139,20 @@ public class Employee implements Serializable {
         }
         Employee other = (Employee) object;
         return Objects.equals(getDpiEmployee(), other.getDpiEmployee());
+    }
+    public String getMessageState(){
+        if(getIsActive()){
+            return "Desactivar";
+        }else{
+            return "Activar";
+        }
+    }
+    public String getIconState(){
+        if(getIsActive()){
+            return "glyphicon glyphicon-remove";
+        }else{
+            return "glyphicon glyphicon-ok";
+        }
     }
 
 }

@@ -3,6 +3,8 @@ package gt.edu.usac.cunoc.ingenieria.employee.view;
 import com.mycompany.employee.Employee;
 import com.mycompany.employee.StaffPosition;
 import com.mycompany.employee.facade.EmployeeFacade;
+import com.mycompany.employee.facade.EmployeeFacadeLocal;
+import gt.edu.usac.cunoc.ingenieria.utils.MessageUtils;
 import java.io.Serializable;
 import java.util.List;
 import javax.annotation.PostConstruct;
@@ -12,26 +14,39 @@ import javax.inject.Named;
 
 @Named
 @ViewScoped
-public class createEmployeeView implements Serializable{
-    
+public class createEmployeeView implements Serializable {
+
     Employee employee;
     List<StaffPosition> staffPositions;
-    
+
     @EJB
-    private EmployeeFacade employeeFacade;
-    
+    private EmployeeFacadeLocal employeeFacade;
+
     @PostConstruct
-    public void init(){
+    public void init() {
         getAllPositions();
+        getEmployee().setIsActive(true); 
     }
     
-    private void getAllPositions(){
-        
+    public StaffPosition getStaffPosition(Integer id) {
+        if (id == null){
+            throw new IllegalArgumentException("no id provided");
+        }
+        for (StaffPosition staffPosition : staffPositions){
+            if (id.equals(staffPosition.getIdStaffPosition())){
+                return staffPosition;
+            }
+        }
+        return null;
+    }
+
+    private void getAllPositions() {
+        this.staffPositions = employeeFacade.getAllStaffPosition();
     }
 
     public Employee getEmployee() {
-        if(employee==null){
-            employee=new Employee();
+        if (employee == null) {
+            employee = new Employee();
         }
         return employee;
     }
@@ -47,9 +62,15 @@ public class createEmployeeView implements Serializable{
     public void setStaffPositions(List<StaffPosition> staffPositions) {
         this.staffPositions = staffPositions;
     }
-    
-    public void createEmployee(){
-    
+
+    public void createEmployee() {
+        employeeFacade.createEmployee(employee);
+        cleanUser();
+        MessageUtils.addSuccessMessage("Se ha creado el usuario");
     }
-    
+
+    private void cleanUser() {
+        employee = null;
+    }
+
 }
