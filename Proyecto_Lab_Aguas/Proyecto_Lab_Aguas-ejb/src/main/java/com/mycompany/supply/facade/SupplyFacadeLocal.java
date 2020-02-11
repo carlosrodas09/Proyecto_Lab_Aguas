@@ -5,6 +5,9 @@
  */
 package com.mycompany.supply.facade;
 
+import com.mycompany.supply.Equipment;
+import com.mycompany.supply.Provider;
+import java.util.List;
 import javax.ejb.Local;
 
 /**
@@ -13,5 +16,8 @@ import javax.ejb.Local;
  */
 @Local
 public interface SupplyFacadeLocal {
+    
+    public  List<Equipment> AllEquipment();
+    public List<Provider> AllProvider();
     
 }

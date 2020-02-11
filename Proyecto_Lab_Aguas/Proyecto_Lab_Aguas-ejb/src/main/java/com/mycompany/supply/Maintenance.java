@@ -29,7 +29,7 @@ public class Maintenance implements Serializable {
     @Basic(optional = false)
     @Column(name = "maintenance_date")
     @Temporal(TemporalType.DATE)
-    private LocalDate maintenanceDate;
+    private Date maintenanceDate;
     @Basic(optional = false)
     @Column(name = "maintenance_cost")
     private Double maintenanceCost;
@@ -47,13 +47,13 @@ public class Maintenance implements Serializable {
         this.idMaintenance = idMaintenance;
     }
 
-    public Maintenance(Integer idMaintenance, LocalDate maintenanceDate, Double maintenanceCost) {
+    public Maintenance(Integer idMaintenance, Date maintenanceDate, Double maintenanceCost) {
         this.idMaintenance = idMaintenance;
         this.maintenanceDate = maintenanceDate;
         this.maintenanceCost = maintenanceCost;
     }
 
-    public Maintenance(Integer idMaintenance, LocalDate maintenanceDate, Double maintenanceCost, Equipment equipmentId, Provider providerId) {
+    public Maintenance(Integer idMaintenance, Date maintenanceDate, Double maintenanceCost, Equipment equipmentId, Provider providerId) {
         this.idMaintenance = idMaintenance;
         this.maintenanceDate = maintenanceDate;
         this.maintenanceCost = maintenanceCost;
@@ -69,11 +69,11 @@ public class Maintenance implements Serializable {
         this.idMaintenance = idMaintenance;
     }
 
-    public LocalDate getMaintenanceDate() {
+    public Date getMaintenanceDate() {
         return maintenanceDate;
     }
 
-    public void setMaintenanceDate(LocalDate maintenanceDate) {
+    public void setMaintenanceDate(Date maintenanceDate) {
         this.maintenanceDate = maintenanceDate;
     }
 
