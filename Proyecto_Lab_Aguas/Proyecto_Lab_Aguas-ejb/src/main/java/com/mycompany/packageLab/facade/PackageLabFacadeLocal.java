@@ -5,6 +5,8 @@
  */
 package com.mycompany.packageLab.facade;
 
+import com.mycompany.packageLab.Parameter;
+import java.util.List;
 import javax.ejb.Local;
 
 /**
@@ -13,5 +15,8 @@ import javax.ejb.Local;
  */
 @Local
 public interface PackageLabFacadeLocal {
+    
+    public List<Parameter> AllParameter();
+    //public void CreateParameter(Parameter parameter);
     
 }
